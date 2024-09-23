@@ -34,6 +34,14 @@ void set(intlist *l, int idx, int num) {
     }
 }
 
+int get(intlist *l, int idx) {
+    if(idx < 0 || idx >= l->size) {
+        printf("Index out of bounds!\nReturn value: -1\n");
+        return -1;
+    }
+    return l->arr[idx];
+}
+
 int indexOf(intlist *l, int key) {
     for(int i = 0; i < l->size; i++) {
         if(l->arr[i] == key) {
