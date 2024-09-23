@@ -14,6 +14,17 @@ void add(intlist *l, int num) {
     l->size++;
 }
 
+void addArray(intlist *l, int array[], int size) {
+    int *newarr = (int *)realloc(l->arr, (l->size + size) * sizeof(int));
+    if(newarr != NULL) {
+        for(int i = l->size; i < l->size + size; i++) {
+            l->arr[i] = array[i - l->size];
+        }
+        l->arr = newarr;
+        l->size += size;
+    }
+}
+
 bool contains(intlist *l, int key) {
     for(int i = 0; i < l->size; i++) {
         if(l->arr[i] == key) {
