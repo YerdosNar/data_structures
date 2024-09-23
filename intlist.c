@@ -14,15 +14,6 @@ void add(intlist *l, int num) {
     l->size++;
 }
 
-bool contains(intlist *l, int key) {
-    for(int i = 0; i < l->size; i++) {
-        if(l->arr[i] == key) {
-            return true;
-        }
-    }
-    return false;
-}
-
 int get(intlist *l, int idx) {
     if(idx < 0 || idx >= l->size) {
         printf("Index out of bounds!\nReturn value is -1\n");
@@ -41,15 +32,17 @@ void set(intlist *l, int idx, int num) {
 }
 
 int indexOf(intlist *l, int key) {
-    if(contains(l, key)) {
-        for(int i = 0; i < l->size; i++) {
-            if(l->arr[i] == key) {
-                return i;
-            }
+    for(int i = 0; i < l->size; i++) {
+        if(l->arr[i] == key) {
+            return i;
         }
     }
     printf("List does NOT contain!\n");
     return -1;
+}
+
+bool contains(intlist *l, int key) {
+    return indexOf(l, key) != -1;
 }
 
 void deleteByKey(intlist *l, int key) {
